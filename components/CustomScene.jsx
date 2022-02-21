@@ -26,22 +26,16 @@ export default function CustomScene() {
   const [enviromentIndex, setEnviromentIndex] = useState(1)
 
   const handleBackClick = () => {
-    if (enviromentIndex !== 0) { setEnviromentIndex(enviromentIndex - 1) }
-    else {
-      setEnviromentIndex(enviromentPresets.length - 1)
-    }
-
-    console.log(enviromentPresets.length)
+    const isFirstItem = enviromentIndex === 0;
+    const lastItem = enviromentPresets.length - 1;
+    const previousItem = enviromentIndex - 1
+    setEnviromentIndex(isFirstItem ? lastItem : previousItem)
   }
 
-
-
   const handleForwardClick = () => {
-    if (enviromentIndex < enviromentPresets.length - 1) { setEnviromentIndex(enviromentIndex + 1) } else {
-      setEnviromentIndex(0)
-    }
-
-    console.log(enviromentIndex)
+    const isLastItem = enviromentIndex >= enviromentPresets.length - 1
+    const nextItem = enviromentIndex + 1;
+    setEnviromentIndex(isLastItem ? 0 : nextItem)
   }
 
   return (
